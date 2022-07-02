@@ -10,9 +10,20 @@
   <body>
     <!-- 1.想讓vue工作，就必須創建一個vue實例，且要配置一個object 
      2.root容器依然符合html規範，只是混入了一些特殊的vue語法 
-     3.root容器裡的代碼被稱為vue模板 -->
+     3.root容器裡的代碼被稱為vue模板 
+    4.Vue實例 instance和容器是一一對應的
+    5.真實開發中只有一個vue instance，並且配合著component一起使用
+    6.{{xxx}}中的xxx要寫js表達式，且xxx可以讀到data裡的所有屬性。
+    7.一旦data發生改變，頁面中用到data的地方會自動更新。
+    -->
+
     <!-- 準備好一個容器 -->
-    <div id="root"><h1>hello,{{name}}</h1></div>
+    <div id="root">
+      <h1>hello,{{name.toUpperCase()}}</h1>
+      <hr />
+      <!-- v-bind: 可以簡寫為 : -->
+      <a target="_blank" v-bind:href="website.url">{{website.name}}</a>
+    </div>
     <script type="text/javascript">
       Vue.config.productionTip = false; //prevent the production tip on Vue startup.
       // 創建一個vue實例
@@ -22,6 +33,10 @@
           //data鐘用於儲存數據，數據供el所指定的容器使用，先暫時寫成object，以後用component會使用function
           name: "Kenny",
           age: "27",
+          website: {
+            name: "youtube",
+            url: "https://www.youtube.com/",
+          },
         },
       });
     </script>
