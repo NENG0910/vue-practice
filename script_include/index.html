@@ -23,6 +23,19 @@
       <hr />
       <!-- v-bind: 可以簡寫為 : -->
       <a target="_blank" v-bind:href="website.url">{{website.name}}</a>
+      <hr />
+      單向數據綁定v-bind :<input type="text" v-bind:value="website.name" />
+      <br />
+      單向數據綁定v-model :<input type="text" v-model:value="website.name" />
+      <h3>Vue中有兩種數據綁定的方式</h3>
+      <br />
+      <p>1.單向數據綁定v-bind:數據只能從data流向頁面</p>
+      <p>
+        2.雙向數據綁定v-model:數據不僅能從data流向頁面，還可以從頁面流向data
+      </p>
+      <p>備註:</p>
+      <p>1.v-model只能用在表單類元素上(輸入類元素input、select)</p>
+      <p>2.v-model:value可以簡寫為v-model，因為v-model默認蒐集的就是value</p>
     </div>
     <script type="text/javascript">
       Vue.config.productionTip = false; //prevent the production tip on Vue startup.
