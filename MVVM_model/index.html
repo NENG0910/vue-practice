@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVVM</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- MVVM模型:
+    1.M Model : data中的數據
+    2.V View : 視圖
+    3.VM ViewModel : new Vue-->
+    <!-- 1.data中所有的屬性，最後都出現在vm上
+    2.vm上所有的屬性，以及vue原型上的屬性，在vue中都可以直接使用 -->
+    <!-- 測試後$root會報錯 json格式問題 -->
+    <div id="root">
+      <!-- This is View -->
+      <h1>Name: {{name}}</h1>
+      <h1>Country: {{country}}</h1>
+      <h1>Test1: {{$options}}</h1>
+      <h1>Test2: {{_c}}</h1>
+    </div>
+  </body>
+  <script type="text/javascript">
+    //new Vue is ViewModel
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        //data is Model
+        name: "Kenny",
+        country: "Taiwan",
+      },
+    });
+    console.log(vm);
+  </script>
+</html>
