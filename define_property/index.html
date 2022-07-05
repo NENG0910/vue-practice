@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let speak = "hello,everyone";
+      let person = {
+        name: "kenny",
+        gender: "male",
+        // age:27,
+      };
+      Object.defineProperty(person, "age", {
+        value: 27,
+        enumerable: true, //控制屬性是否能被列舉，預設flase  如果enumerable:flase用foreach之類的就無法顯示
+        writable: true, //用defineProperty 預設在開發者模式無法直接更改值 writable:true才可以更改
+        configurable: true, //控制屬性可以被刪除，預設flase
+      });
+      Object.defineProperty(person, "say", {
+        // enumerable: true,
+        //當讀取person say的屬性時，get函數(getter)就會被調用，且返回的值是say的值
+        //get:function(){}也可以寫作get(){}
+        get: function () {
+          console.log("Loading say now");
+          return speak;
+        },
+        //當修改person say的屬性時，set函數(setter)就會被調用，且收到修改的值
+        set(value) {
+          console.log("Setting say now is " + value);
+          speak = value;
+        },
+      });
+      console.log(person);
+      console.log(Object.keys(person));
+    </script>
+  </body>
+</html>

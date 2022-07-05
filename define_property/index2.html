@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width", initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //如何在obj2修改obj的x值
+      let obj = { x: 100 };
+      let obj2 = { y: 200 };
+      Object.defineProperty(obj2, "x", {
+        get() {
+          return obj.x;
+        },
+        set(value) {
+          obj.x = value;
+        },
+      });
+      console.log(obj);
+      console.log(obj2);
+    </script>
+  </body>
+</html>
