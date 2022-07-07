@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      姓:<input type="text" v-model="lastName" />
+      <br />
+      <br />
+      名:<input type="text" v-model="firstName" />
+      <br />
+      <br />
+      <p>姓名:</p>
+      <p>{{fullName}}</p>
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: "#root",
+        data: {
+          lastName: "HSU",
+          firstName: "Kenny",
+        },
+        methods: {},
+        computed: {
+          fullName: {
+            //當有人讀取fullName時get就會執行，返回值就作為fullName的值
+            //get執行時機1.初次讀取fullName時 2.所依賴的數據發生改變時
+            //相比methods，因為有緩存，所以執行次數少，影響效能。
+            get() {
+              return this.firstName + "-" + this.lastName;
+            },
+            //set執行時機1.當fullName被修改的時候
+            set(value) {
+              console.log("loading set");
+              const arr = value.split("-");
+              this.firstName = arr[0];
+              this.lastName = arr[1];
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
