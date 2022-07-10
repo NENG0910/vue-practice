@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .basic {
+        width: 400px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      .happy {
+        background-color: red;
+      }
+      .sad {
+        background-color: aqua;
+      }
+      .normal {
+        background-color: antiquewhite;
+      }
+      .textCSS1 {
+        font-size: 3rem;
+      }
+      .textCSS2 {
+        color: blue;
+      }
+      .textCSS3 {
+        text-decoration: line-through;
+      }
+    </style>
+    <script type="text/javascript" src="../js//vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 綁定class樣式，字符串("")寫法，適用於樣式的類名不確定，需要動態指定 -->
+      <div class="basic" :class="mood" @click="changeMood">test</div>
+      <br />
+      <!-- 綁定class樣式，數組(arr)寫法，適用於要綁定的樣式個數不確定，名稱也不確定 -->
+      <div class="basic" :class="arrCSS" @click="changeMood">test</div>
+      <br />
+      <!-- 綁定class樣式，對象(object)寫法，適用於要綁定的樣式個數確定，名稱確定，但需要動態指定 -->
+      <div class="basic" :class="objCSS" @click="changeMood">test</div>
+      <br />
+      <!-- 綁定style樣式 字符串("")寫法-->
+      <div class="basic" :style="{fontSize:fsize+'px'}">test</div>
+      <br />
+      <!-- 綁定style樣式 對象(object)寫法-->
+      <div class="basic" :style="styleObj1">test</div>
+      <br />
+      <!-- 綁定style樣式 數組(arr)寫法-->
+      <div class="basic" :style="[styleObj1,styleObj2]">test</div>
+      <br />
+      <!-- 綁定style樣式 數組(arr)寫法-->
+      <div class="basic" :style="styleArr">test</div>
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#root",
+        data: {
+          mood: "happy",
+          arrCSS: ["textCSS1", "textCSS2", "textCSS3"],
+          objCSS: {
+            textCSS1: false,
+            textCSS2: false,
+          },
+          fsize: 40,
+          styleObj1: {
+            "font-size": "60px",
+          },
+          styleObj2: {
+            backgroundColor: "orange",
+          },
+          styleArr: [
+            {
+              "font-size": "60px",
+            },
+            {
+              backgroundColor: "blue",
+            },
+          ],
+        },
+        methods: {
+          changeMood() {
+            const arr = ["happy", "sad", "normal"];
+            let randomMood = Math.floor(Math.random() * 3);
+            this.mood = arr[randomMood];
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
