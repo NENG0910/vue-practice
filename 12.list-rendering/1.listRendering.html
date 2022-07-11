@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript" src="../js//vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <ul>
+        <li v-for="person in personList" :key="person.id">
+          {{person.name}}-{{person.age}}
+        </li>
+        <hr />
+        <li v-for="(p,index) in personList" :key="index">
+          {{p.name}}-{{p.age}}
+        </li>
+        <hr />
+        <!-- object寫法 -->
+        <li v-for="(s,index) of schoolarShipList" :key="index">
+          {{index}}-{{s}}
+        </li>
+        <hr />
+        <!-- string寫法 -->
+        <li v-for="(char,index) of str" :key="index">{{index}}-{{char}}</li>
+        <!-- 顯示次數 -->
+        <li v-for="(num,index) of 5">num顯示第{{num}}輪，index數字{{index}}</li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#root",
+        data: {
+          personList: [
+            { id: "001", name: "Kenny", age: 27 },
+            { id: "002", name: "Wilson", age: 30 },
+            { id: "003", name: "Sherry", age: 18 },
+          ],
+          schoolarShipList: {
+            name: "Kenny",
+            schoolarShip: 500,
+          },
+          str: "hello",
+        },
+      });
+    </script>
+  </body>
+</html>
